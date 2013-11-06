@@ -1,0 +1,69 @@
+Hello Git!
+git init - initialize local repo
+
+git status - local state
+
+git add '*.txt' - add files to local  Staging Area
+			staged files are files we have told git that are ready to be committed.
+
+git commit -m "Commit message" - commit files from  Staging Area to local repo
+
+ git log - commit journal 
+
+git remote add origin https://github.com/try-git/try_git.git -  To push our local repo to the GitHub 
+								server we'll need to add a remote repository
+
+
+
+git push -u origin master  -   push our local changes to our origin repo (on GitHub).
+				The name of our remote is origin and the default local branch name is master.
+				The -u tells Git to remember the parameters,
+				so that next time we can simply run git push
+
+
+git pull origin master  -  check for changes on our GitHub repository and pull down any new changes by running
+
+git diff HEAD -  	take a look at what is different from our last commit
+(git diff --staged)	 most recent commit, which we can refer to using the HEAD pointer
+			Another great use for diff is looking at changes within files that have already been staged
+
+git reset octofamily/octodog.txt -  You can unstage files 
+
+
+ git checkout -- <target>   -   Files can be changed back to how they were at the last commit 
+(git checkout -- octocat.txt)
+
+
+git branch clean_up  - create a branch called clean_up
+
+git branch  - you'll see local branches
+
+git checkout <branch>  -  switch branches
+(git checkout clean_up)
+
+git rm   -  	command which will not only remove the actual files from disk, 
+(git rm '*.txt')		but will also stage the removal of the files for us.
+
+
+git merge clean_up    -    	We're already on the master branch, 
+				merge your changes from the clean_up branch into the master branch
+
+ git branch -d <branch name> to delete a branch
+
+git rebase master  - 		the bugFix branch is currently selected
+				 move our work from bugFix directly onto the work from master. 
+				That way it would look like these two features were developed sequentially,
+				 when in reality they were developed in parallel
+
+git branch -f master HEAD~3   -  Moves (by force) the master branch to three parents behind HEAD.
+
+git reset 		 	- 	 way to undo changes in Git in local repo
+(git reset HEAD~1) 	Git simply moved the master branch reference back to C1; now our local repository is in a state as if C2 had never happened
+
+
+git revert HEAD 	 - 	a new commit plopped down below the commit we wanted to reverse.
+				 That's because this new commit C2' introduces changes -
+				- it just happens to introduce changes that exactly reverses the commit of C2.
+
+
+git cherry-pick <Commit1> <Commit2> <...>   -  copy a series of commits below your current location 
